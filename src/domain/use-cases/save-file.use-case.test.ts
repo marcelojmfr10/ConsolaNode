@@ -16,10 +16,26 @@ describe('SaveFileUseCase', () => {
   //   jest.clearAllMocks();
   // });
 
+  // solución de instructor
+  // const clean = () => {
+  //   const outputFolderExists = fs.existsSync('outputs');
+  //   if ( outputFolderExists ) fs.rmSync('outputs', { recursive: true });
+
+  //   const customOutputFolderExists = fs.existsSync('custom-output');
+  //   if ( customOutputFolderExists ) fs.rmSync('custom-output', { recursive: true });
+
+  //   const outputErrorFolderExists = fs.existsSync('output-error');
+  //   if ( outputErrorFolderExists ) fs.rmSync('output-error', { recursive: true });
+  // }
+
+  // afterAll(() => {
+  //   clean();
+  // });
+
   afterEach(() => {
     // clean up
-    const outputFolderExist = fs.existsSync('outputs');
-    if (outputFolderExist) fs.rmSync('outputs', { recursive: true });
+    // const outputFolderExist = fs.existsSync('outputs');
+    // if (outputFolderExist) fs.rmSync('outputs', { recursive: true });
 
     // si hay otro directorio dentro del principal
     // const customOutputFolderExist = fs.existsSync(customOptions.fileDestination);
@@ -28,8 +44,8 @@ describe('SaveFileUseCase', () => {
     //   fs.rmSync(mainFolder, { recursive: true });
     // } 
 
-    const customOutputFolderExist = fs.existsSync(customOptions.fileDestination);
-    if (customOutputFolderExist) fs.rmSync(customOptions.fileDestination, {recursive: true});
+    // const customOutputFolderExist = fs.existsSync(customOptions.fileDestination);
+    // if (customOutputFolderExist) fs.rmSync(customOptions.fileDestination, {recursive: true});
     
   });
 
