@@ -1,36 +1,34 @@
-import fs from 'fs';
+import fs from "fs";
 
 export interface SaveFileUseCase {
-    execute: (options: Options) => boolean;
+  execute: (options: Options) => boolean;
 }
 
 export interface Options {
-    fileContent: string;
-    fileDestination?: string;
-    fileName?: string;
+  fileContent: string;
+  fileDestination?: string;
+  fileName?: string;
 }
 
 export class SaveFile implements SaveFileUseCase {
-    constructor(
-        /**
-         * repository: StorageRepository
-         */
-    ) {
+  constructor() /**
+   * repository: StorageRepository
+   */
+  {}
 
+  execute({
+    fileContent,
+    fileDestination = "outputs",
+    fileName = "table",
+  }: Options): boolean {
+    try {
+      fs.mkdirSync(fileDestination, { recursive: true });
+      fs.writeFileSync(`${fileDestination}/${fileName}.txt`, fileContent);
+
+      return true;
+    } catch (error) {
+      // console.error(error);
+      return false;
     }
-
-    execute({ fileContent, fileDestination = 'outputs', fileName = 'table' }: Options): boolean {
-        try {
-            fs.mkdirSync(fileDestination, { recursive: true });
-            fs.writeFileSync(`${fileDestination}/${fileName}.txt`, fileContent);
-
-            return true;
-        } catch (error) {
-            // console.error(error);
-            return false;
-        }
-
-    }
-
-
+  }
 }
